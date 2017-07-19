@@ -6,7 +6,6 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using ArduinoDriver.SerialEngines;
 using ArduinoDriver.SerialProtocol;
 using ArduinoUploader;
 using ArduinoUploader.Hardware;
@@ -37,7 +36,7 @@ namespace ArduinoDriver
         private const int DriverBaudRate = 115200;
         private ArduinoDriverSerialPort port;
         private ArduinoDriverConfiguration config;
-        private Func<ISerialPortEngine> engineFunc;
+        private Func<SerialPortStream> serialFunc;
 
         private const string ArduinoListenerHexResourceFileName =
             "ArduinoDriver.ArduinoListener.ArduinoListener.ino.{0}.hex";
@@ -217,25 +216,12 @@ namespace ArduinoDriver
 
         #region Private Methods
 
-        private Task InitializeAsync(ArduinoDriverConfiguration config)
+        private Task InitializeAsync(ArduinoDriverConfiguration arduinoConfig)
         {
-            logger.Info("Instantiating ArduinoDriver: {0} - {1}...", config.ArduinoModel, config.PortName);
+            logger.Info("Instantiating ArduinoDriver: {0} - {1}...", arduinoConfig.ArduinoModel, arduinoConfig.PortName);
 
-            this.config = config;
-
-            switch (config.ArduinoModel)
-            {
-                case ArduinoModel.Micro:
-                {
-                    engineFunc = () => new RJCPSerialPortStream { PortName = config.PortName, BaudRate = DriverBaudRate };
-                    break;
-                }
-                default:
-                {
-                    engineFunc = () => new DefaultSerialPort { PortName = config.PortName, BaudRate = DriverBaudRate };
-                    break;
-                }
-            }
+            config = arduinoConfig;
+            serialFunc = () => new SerialPortStream() { PortName = config.PortName, BaudRate = DriverBaudRate };
 
             return config.AutoBootstrap
                 ? InitializeWithAutoBootstrapAsync()
@@ -330,13 +316,13 @@ namespace ArduinoDriver
 
         private void InitializePort()
         {
-            var engine = engineFunc();
-            var portName = engine.PortName;
-            var baudRate = engine.BaudRate;
+            var serialEngine = serialFunc();
+            var portName = serialEngine.PortName;
+            var baudRate = serialEngine.BaudRate;
             logger.Debug("Initializing port {0} - {1}...", portName, baudRate);
-            engine.WriteTimeout = 100;
-            engine.ReadTimeout = 100;
-            port = new ArduinoDriverSerialPort(engine);
+            serialEngine.WriteTimeout = 200;
+            serialEngine.ReadTimeout = 500;
+            port = new ArduinoDriverSerialPort(serialEngine);
             port.Open();
         }
 
