@@ -12,25 +12,18 @@
 
         public const byte HandshakeInitiate         = 0x01;
         public const byte HandshakeAck              = 0x02;
-        public const byte DigitalRead               = 0x03;
-        public const byte DigitalReadAck            = 0x04;
-        public const byte DigitalWrite              = 0x05;
-        public const byte DigitalWriteAck           = 0x06;
-        public const byte PinMode                   = 0x07;
-        public const byte PinModeAck                = 0x08;
-        public const byte AnalogRead                = 0x09;
-        public const byte AnalogReadAck             = 0x0A;
-        public const byte AnalogWrite               = 0x0B;
-        public const byte AnalogWriteAck            = 0x0C;
-        public const byte Tone                      = 0x0D;
-        public const byte ToneAck                   = 0x0E;
-        public const byte NoTone                    = 0x0F;
-        public const byte NoToneAck                 = 0x10;
-        public const byte AnalogReference           = 0x11;
-        public const byte AnalogReferenceAck        = 0x12;
-        public const byte ShiftOut                  = 0x13;
-        public const byte ShiftOutAck               = 0x14;
-        public const byte ShiftIn                   = 0x15;
-        public const byte ShiftInAck                = 0x16;
+
+        public const byte Begin = 0x03;
+        public const byte BeginAck = 0x04;
+        public const byte End = 0x05;
+        public const byte EndAck = 0x06;
+        public const byte Pen = 0x07;
+        public const byte PenAck = 0x08;
+        public const byte Move = 0x09;
+        public const byte MoveAck = 0x0a;
+        public const byte Dot = 0x0b;
+        public const byte DotAck = 0x0c;
+        public const byte Line = 0x0d;
+        public const byte LineAck = 0x0e;
     }
 }

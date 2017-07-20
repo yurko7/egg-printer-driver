@@ -62,36 +62,27 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="SerialProtocol\AnalogReadRequest.cs" />
-    <Compile Include="SerialProtocol\AnalogReadResponse.cs" />
-    <Compile Include="SerialProtocol\AnalogReferenceRequest.cs" />
-    <Compile Include="SerialProtocol\AnalogReferenceResponse.cs" />
-    <Compile Include="SerialProtocol\AnalogReferenceType.cs" />
-    <Compile Include="SerialProtocol\AnalogWriteRequest.cs" />
-    <Compile Include="SerialProtocol\AnalogWriteResponse.cs" />
     <Compile Include="SerialProtocol\ArduinoMessage.cs" />
     <Compile Include="SerialProtocol\ArduinoRequest.cs" />
     <Compile Include="SerialProtocol\ArduinoResponse.cs" />
-    <Compile Include="SerialProtocol\BitOrder.cs" />
+    <Compile Include="SerialProtocol\BeginRequest.cs" />
+    <Compile Include="SerialProtocol\BeginResponse.cs" />
     <Compile Include="SerialProtocol\CommandConstants.cs" />
-    <Compile Include="SerialProtocol\DigitalReadRequest.cs" />
-    <Compile Include="SerialProtocol\DigitalReadResponse.cs" />
-    <Compile Include="SerialProtocol\DigitalWriteReponse.cs" />
-    <Compile Include="SerialProtocol\DigitalWriteRequest.cs" />
+    <Compile Include="SerialProtocol\DotRequest.cs" />
+    <Compile Include="SerialProtocol\DotResponse.cs" />
+    <Compile Include="SerialProtocol\EndRequest.cs" />
+    <Compile Include="SerialProtocol\EndResponse.cs" />
     <Compile Include="SerialProtocol\ErrorResponse.cs" />
     <Compile Include="SerialProtocol\HandShakeRequest.cs" />
     <Compile Include="SerialProtocol\HandShakeResponse.cs" />
-    <Compile Include="SerialProtocol\NoToneRequest.cs" />
-    <Compile Include="SerialProtocol\NoToneResponse.cs" />
-    <Compile Include="SerialProtocol\PinMode.cs" />
-    <Compile Include="SerialProtocol\PinModeRequest.cs" />
-    <Compile Include="SerialProtocol\PinModeResponse.cs" />
-    <Compile Include="SerialProtocol\ShiftInRequest.cs" />
-    <Compile Include="SerialProtocol\ShiftInResponse.cs" />
-    <Compile Include="SerialProtocol\ShiftOutRequest.cs" />
-    <Compile Include="SerialProtocol\ShiftOutResponse.cs" />
-    <Compile Include="SerialProtocol\ToneRequest.cs" />
-    <Compile Include="SerialProtocol\ToneResponse.cs" />
+    <Compile Include="SerialProtocol\LineRequest.cs" />
+    <Compile Include="SerialProtocol\LineResponse.cs" />
+    <Compile Include="SerialProtocol\MoveRequest.cs" />
+    <Compile Include="SerialProtocol\MoveResponse.cs" />
+    <Compile Include="SerialProtocol\PenRequest.cs" />
+    <Compile Include="SerialProtocol\PenResponse.cs" />
+    <Compile Include="SerialProtocol\PenState.cs" />
+    <Compile Include="SerialProtocol\Point.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

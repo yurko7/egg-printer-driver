@@ -99,103 +99,63 @@ namespace ArduinoDriver
         }
 
         /// <summary>
-        /// Sends a Analog Read Request to the Arduino.
+        /// Sends a Begin Request to the Arduino.
         /// </summary>
-        /// <param name="request">Analog Read Request</param>
-        /// <returns>The Analog Read Response</returns>
-        public async Task<AnalogReadResponse> SendAsync(AnalogReadRequest request)
+        /// <param name="request">Begin Request</param>
+        /// <returns>The Begin Response</returns>
+        public async Task<BeginResponse> SendAsync(BeginRequest request)
         {
-            return (AnalogReadResponse) await InternalSendAsync(request);
+            return (BeginResponse) await InternalSendAsync(request);
         }
 
         /// <summary>
-        /// Sends a Analog Write Request to the Arduino.
+        /// Sends a End Request to the Arduino.
         /// </summary>
-        /// <param name="request">Analog Write Request</param>
-        /// <returns>The Analog Write Response</returns>
-        public async Task<AnalogWriteResponse> SendAsync(AnalogWriteRequest request)
+        /// <param name="request">End Request</param>
+        /// <returns>The End Response</returns>
+        public async Task<EndResponse> SendAsync(EndRequest request)
         {
-            return (AnalogWriteResponse) await InternalSendAsync(request);
+            return (EndResponse) await InternalSendAsync(request);
         }
 
         /// <summary>
-        /// Sends a Digital Read Request to the Arduino.
+        /// Sends a Pen Request to the Arduino.
         /// </summary>
-        /// <param name="request">Digital Read Request</param>
-        /// <returns>The Digital Read Response</returns>
-        public async Task<DigitalReadResponse> SendAsync(DigitalReadRequest request)
+        /// <param name="request">Pen Request</param>
+        /// <returns>The Pen Response</returns>
+        public async Task<PenResponse> SendAsync(PenRequest request)
         {
-            return (DigitalReadResponse) await InternalSendAsync(request);
+            return (PenResponse) await InternalSendAsync(request);
         }
 
         /// <summary>
-        /// Sends a Digital Write Request to the Arduino.
+        /// Sends a Move Request to the Arduino.
         /// </summary>
-        /// <param name="request">Digital Write Request</param>
-        /// <returns>The Digital Write Response</returns>
-        public async Task<DigitalWriteReponse> SendAsync(DigitalWriteRequest request)
+        /// <param name="request">Move Request</param>
+        /// <returns>The Move Response</returns>
+        public async Task<MoveResponse> SendAsync(MoveRequest request)
         {
-            return (DigitalWriteReponse) await InternalSendAsync(request);
+            return (MoveResponse) await InternalSendAsync(request);
         }
 
         /// <summary>
-        /// Sends a PinMode Request to the Arduino.
+        /// Sends a Dot Request to the Arduino.
         /// </summary>
-        /// <param name="request">PinMode Request</param>
-        /// <returns>The PinMode Response</returns>
-        public async Task<PinModeResponse> SendAsync(PinModeRequest request)
+        /// <param name="request">Dot Request</param>
+        /// <returns>The Dot Response</returns>
+        public async Task<DotResponse> SendAsync(DotRequest request)
         {
-            return (PinModeResponse) await InternalSendAsync(request);
+            return (DotResponse) await InternalSendAsync(request);
         }
 
         /// <summary>
-        /// Sends a Tone Request to the Arduino.
+        /// Sends a Line Request to the Arduino.
         /// </summary>
-        /// <param name="request">Tone Request</param>
-        /// <returns>The Tone Response</returns>
-        public async Task<ToneResponse> SendAsync(ToneRequest request)
+        /// <param name="request">Line Request</param>
+        /// <returns>The Line Response</returns>
+        public async Task<LineResponse> SendAsync(LineRequest request)
         {
-            return (ToneResponse) await InternalSendAsync(request);
-        }
-
-        /// <summary>
-        /// Sends a NoTone Request to the Arduino.
-        /// </summary>
-        /// <param name="request">NoTone Request</param>
-        /// <returns>The NoTone Response</returns>
-        public async Task<NoToneResponse> SendAsync(NoToneRequest request)
-        {
-            return (NoToneResponse) await InternalSendAsync(request);
-        }
-
-        /// <summary>
-        /// Sends a AnalogReference Request to the Arduino.
-        /// </summary>
-        /// <param name="request">AnalogReference Request</param>
-        /// <returns>AnalogReference Response</returns>
-        public async Task<AnalogReferenceResponse> SendAsync(AnalogReferenceRequest request)
-        {
-            return (AnalogReferenceResponse) await InternalSendAsync(request);
-        }
-
-        /// <summary>
-        /// Sends a ShiftOut Request to the Arduino.
-        /// </summary>
-        /// <param name="request">ShiftOut Request</param>
-        /// <returns>ShiftOut Response</returns>
-        public async Task<ShiftOutResponse> SendAsync(ShiftOutRequest request)
-        {
-            return (ShiftOutResponse) await InternalSendAsync(request);
-        }
-
-        /// <summary>
-        /// Sends a ShiftIn Request to the Arduino;
-        /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
-        public async Task<ShiftInResponse> SendAsync(ShiftInRequest request)
-        {
-            return (ShiftInResponse) await InternalSendAsync(request);
+            return (LineResponse) await InternalSendAsync(request);
         }
 
         /// <summary>
