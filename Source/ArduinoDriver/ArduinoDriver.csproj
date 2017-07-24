@@ -90,9 +90,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="ArduinoDriver.nuspec">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="ArduinoListener\ArduinoListener.ino" />
     <EmbeddedResource Include="ArduinoListener\ArduinoListener.ino.UnoR3.hex" />
     <EmbeddedResource Include="ArduinoListener\ArduinoListener.ino.Mega2560.hex" />
