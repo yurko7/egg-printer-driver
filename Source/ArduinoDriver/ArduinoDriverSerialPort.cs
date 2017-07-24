@@ -43,11 +43,12 @@ namespace ArduinoDriver
                 var bytes = CommandConstants.SyncBytes;
                 await serialPort.WriteAsync(bytes, 0, bytes.Length);
                 var responseBytes = await ReadCurrentReceiveBufferAsync(4);
+                var ackBytes = CommandConstants.SyncAckBytes;
                 return responseBytes.Length == 4
-                       && responseBytes[0] == bytes[3]
-                       && responseBytes[1] == bytes[2]
-                       && responseBytes[2] == bytes[1]
-                       && responseBytes[3] == bytes[0];
+                       && responseBytes[0] == ackBytes[0]
+                       && responseBytes[1] == ackBytes[1]
+                       && responseBytes[2] == ackBytes[2]
+                       && responseBytes[3] == ackBytes[3];
             }
             catch (TimeoutException e)
             {
@@ -63,7 +64,7 @@ namespace ArduinoDriver
 
         private async Task<bool> ExecuteCommandHandShakeAsync(byte command, byte length)
         {
-            var bytes = new byte[] {0xfb, command, length};
+            var bytes = new byte[] {CommandConstants.StartOfMessage, command, length};
             await serialPort.WriteAsync(bytes, 0, bytes.Length);
             var responseBytes = await ReadCurrentReceiveBufferAsync(3);
             return responseBytes.Length == 3
@@ -80,7 +81,7 @@ namespace ArduinoDriver
             {
                 try
                 {
-                    // First try to get sync (send FF FE FD FC and require FC FD FE FF as a response).
+                    // First try to get sync (send FE ED BA BE and require CA FE F0 0D as a response).
                     bool hasSync;
                     var syncRetries = 0;
                     while (!(hasSync = await SynchronizeAsync()) && syncRetries++ < MaxSyncRetries)

@@ -32,7 +32,7 @@ namespace ArduinoDriver
                 {ArduinoModel.Mega2560, 4000}
             };
         private const int CurrentProtocolMajorVersion = 1;
-        private const int CurrentProtocolMinorVersion = 2;
+        private const int CurrentProtocolMinorVersion = 0;
         private const int DriverBaudRate = 115200;
         private ArduinoDriverSerialPort port;
         private ArduinoDriverConfiguration config;

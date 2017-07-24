@@ -1,7 +1,7 @@
 /*
  *
- * ArduinoLibCSharp ArduinoDriver Serial Protocol - Arduino Listener.
- * Version 1.2.
+ * Egg-Printer ArduinoDriver Serial Protocol - Arduino Listener.
+ * Version 1.0
  */
 
 #include <Servo.h>
@@ -18,7 +18,7 @@ const byte START_OF_RESPONSE_MARKER   = 0xf9;
 const byte ERROR_MARKER               = 0xef;
 
 const unsigned int PROTOCOL_VERSION_MAJOR = 1;
-const unsigned int PROTOCOL_VERSION_MINOR = 2;
+const unsigned int PROTOCOL_VERSION_MINOR = 0;
 
 const byte CMD_HANDSHAKE_INITIATE     = 0x01;
 const byte ACK_HANDSHAKE_INITIATE     = 0x02;
@@ -86,19 +86,19 @@ void loop() {
     // Reset variables
     memset(data, 0, sizeof(data));
 
-    // Try to acquire SYNC. Try to read up to four bytes, and only advance if the pattern matches ff fe fd fc.
+    // Try to acquire SYNC. Try to read up to four bytes, and only advance if the pattern matches FE ED BA BE.
     // Blocking (the client must retry if getting sync fails).
     while (Serial.available() < SYNC_REQUEST_LENGTH) { ; }
-    if ((syncByte = Serial.read()) != 0xff) return;
-    if ((syncByte = Serial.read()) != 0xfe) return;
-    if ((syncByte = Serial.read()) != 0xfd) return;
-    if ((syncByte = Serial.read()) != 0xfc) return;
+    if ((syncByte = Serial.read()) != 0xFE) return;
+    if ((syncByte = Serial.read()) != 0xED) return;
+    if ((syncByte = Serial.read()) != 0xBA) return;
+    if ((syncByte = Serial.read()) != 0xBE) return;
 
-    // Write out SYNC ACK (fc fd fe ff).
-    Serial.write(0xfc);
-    Serial.write(0xfd);
-    Serial.write(0xfe);
-    Serial.write(0xff);
+    // Write out SYNC ACK (CA FE F0 0D).
+    Serial.write(0xCA);
+    Serial.write(0xFE);
+    Serial.write(0xF0);
+    Serial.write(0x0D);
     Serial.flush();
 
     // Now expect the START_OF_REQUEST_MARKER (0xfb), followed by our command byte, and a length byte

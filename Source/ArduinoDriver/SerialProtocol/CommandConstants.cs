@@ -2,8 +2,8 @@
 {
     public static class  CommandConstants
     {
-        public static readonly byte[] SyncBytes     = { 0xff, 0xfe, 0xfd, 0xfc };
-        public static readonly byte[] SyncAckBytes  = { 0xfc, 0xfd, 0xfe, 0xff };
+        public static readonly byte[] SyncBytes     = { 0xFE, 0xED, 0xBA, 0xBE };
+        public static readonly byte[] SyncAckBytes  = { 0xCA, 0xFE, 0xF0, 0x0D };
 
         public const byte StartOfMessage            = 0xFB;
         public const byte AllBytesWritten           = 0xFA;
