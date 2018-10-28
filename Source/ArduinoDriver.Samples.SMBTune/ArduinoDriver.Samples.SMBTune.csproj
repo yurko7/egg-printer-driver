@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,9 +34,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ArduinoUploader, Version=2.4.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ArduinoUploader.2.4.5\lib\net452\ArduinoUploader.dll</HintPath>
+    <Reference Include="ArduinoUploader">
+      <HintPath>..\packages\ArduinoUploader.3.1.0\lib\net452\ArduinoUploader.dll</HintPath>
     </Reference>
     <Reference Include="IntelHexFormatReader, Version=2.2.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
